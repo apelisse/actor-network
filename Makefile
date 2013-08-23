@@ -5,7 +5,10 @@ CFLAGS = -Wextra -W -Wno-unused-result -O3 -g
 CFLAGS_ALL = $(CFLAGS) $(shell pkg-config --cflags glib-2.0)
 LDFLAGS_ALL = $(LDFLAGS) $(shell pkg-config --libs glib-2.0)
 
-all:: importer
+all:: bacon importer
+
+bacon: pack.o bacon.o
+	$(CC) $^ -o $@ $(LDFLAGS_ALL)
 
 importer: importer.o
 	$(CC) $^ -o $@ $(LDFLAGS_ALL)
@@ -15,4 +18,4 @@ importer: importer.o
 
 .PHONE: clean
 clean:
-	-$(RM) importer *.o
+	-$(RM) bacon importer *.o
