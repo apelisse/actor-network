@@ -1,0 +1,8 @@
+*.o
+bacon
+importer
+
+actors.list
+actresses.list
+
+config.mak
